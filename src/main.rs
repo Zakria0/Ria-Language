@@ -115,7 +115,6 @@ fn compile_to_executable(asm_code: &str, output_name: &str) -> Result<(), Box<dy
     fs::write(asm_file, asm_code)?;
     println!("Generated assembly written to {}", asm_file);
     
-    // Assemble with nasm
     let nasm_status = Command::new("nasm")
         .args(&["-f", "elf64", asm_file, "-o", obj_file])
         .status()?;
